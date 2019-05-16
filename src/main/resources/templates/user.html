@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>사용자 정보 조회</title>
+    <th:block th:include="fragments/header"></th:block>
+ 	<script type="text/javascript" src="/js/main.js"></script>
+</head>
+<body>
+<th:block th:include="fragments/nav"></th:block>
+<div class="container" style="min-height: 500px">
+
+    <div class="starter-template">
+        <h1>사용자 정보 조회</h1>
+
+        <div id="feedback"></div>
+
+        <table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">아이디</th>
+		      <th scope="col">이름</th>
+		      <th scope="col">회사</th>
+		      <th scope="col">변경</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <th scope="row"><span th:text="${id}"></span></th>
+		      <td><span th:text="${name}"></span></td>
+		      <td><span th:text="${company}"></span></td>  
+		      <td>
+		      <a href="#">수정</a>
+		      <form th:action="@{/users/{id}(id=${id})}" method="post">
+		      	  <!--  /users/3 vs. /users/?id=3 
+                  <input type="hidden" name="id" th:value="${id}" />
+                  -->
+                  <input type="submit" value="삭제" class="btn btn-danger" />
+              </form>
+		      </td>
+		    </tr>
+		    
+		  </tbody>
+		</table>
+
+    </div>
+
+</div>
+<th:block th:include="fragments/footer"></th:block>
+</body>
+</html>
